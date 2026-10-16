@@ -9,5 +9,12 @@ def estructura_expedientes(Codigo, Estudiante, Apoderado, Nivel, Estado, Calific
                "Calificaciones": Calificaciones
         }
    
+#LISTA DE EXPEDIENTES
+def lista_expedientes(expedientes):
+        if len(expedientes) == 0:
+           print("ERROR: Expediente no encontrado")
+           return
+        for expediente in expedientes:
+              print(expediente)
 
  
