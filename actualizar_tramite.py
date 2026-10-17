@@ -11,5 +11,25 @@ def actualizar_estado_tramite(codigos, estados, total):
 
     if posicion != -1:
         print(f"Expediente encontrado. Estado actual: {estados[posicion]}")
+        print("1. PENDIENTE")
+        print("2. EN PROCESO")
+        print("3. ATENDIDO")
+        print("4. RECHAZADO")
+
+        opcion = input("Seleccione el nuevo estado (1-4): ").strip()
+
+        if opcion == "1":
+            estados[posicion] = "PENDIENTE"
+        elif opcion == "2":
+            estados[posicion] = "EN PROCESO"
+        elif opcion == "3":
+            estados[posicion] = "ATENDIDO"
+        elif opcion == "4":
+            estados[posicion] = "RECHAZADO"
+        else:
+            print("Opción no válida. No se realizaron cambios.")
+            return
+            
+        print(f"¡Éxito! El estado se actualizó a: {estados[posicion]}")
     else:
         print("Error: El código ingresado no existe.")
