@@ -1,7 +1,6 @@
 
 # Funcion para ordenar expedientes por codigo
-def ordenar_expedientes_por_codigo(codigos, apo_pat, apo_mat, apo_nom,
-                                   apo_dni, apo_telf, est_pat, est_mat,
+def ordenar_expedientes_por_codigo(codigos, apo_pat, apo_mat, apo_nom, apo_dni, apo_telf, est_pat, est_mat, 
                                    est_nom, niveles, asuntos, estados):
 
     cantidad = len(codigos)
@@ -62,6 +61,32 @@ def ordenar_expedientes_por_codigo(codigos, apo_pat, apo_mat, apo_nom,
     print("Expedientes ordenados correctamente.")
 
 
+# Funcion para buscar un expediente por codigo
+def buscar_expediente_por_codigo(codigos, apo_pat, apo_mat, apo_nom,
+                                 apo_dni, apo_telf, est_pat, est_mat,
+                                 est_nom, niveles, asuntos, estados,
+                                 codigo_buscar):
+
+    encontrado = False
+
+    for a in range(len(codigos)):
+        if codigos[a] == codigo_buscar:
+
+            print("EXPEDIENTE ENCONTRADO")
+            print("Codigo:", codigos[a])
+            print("Apoderado:", apo_pat[a], apo_mat[a], apo_nom[a])
+            print("DNI:", apo_dni[a])
+            print("Telefono:", apo_telf[a])
+            print("Estudiante:", est_pat[a], est_mat[a], est_nom[a])
+            print("Nivel:", niveles[a])
+            print("Asunto:", asuntos[a])
+            print("Estado:", estados[a])
+
+            encontrado = True
+
+    if encontrado == False:
+        print("No se encontro el expediente.")
+
 # Datos de prueba
 codigos = ["EXP-1003", "EXP-1001", "EXP-1002"]
 
@@ -98,3 +123,15 @@ for a in range(len(codigos)):
     print("Nivel:", niveles[a])
     print("Asunto:", asuntos[a])
     print("Estado:", estados[a])
+
+
+
+print()
+codigo_buscar = input("Ingrese el codigo que desea buscar: ").upper()
+
+buscar_expediente_por_codigo(
+    codigos, apo_pat, apo_mat, apo_nom, apo_dni, apo_telf,
+    est_pat, est_mat, est_nom, niveles, asuntos, estados,
+    codigo_buscar
+)
+    
