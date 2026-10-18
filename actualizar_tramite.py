@@ -1,4 +1,5 @@
 #Función 4: Actualizar estado del trámite
+
 def actualizar_estado_tramite(codigos, estados, total):
     print("\n--- ACTUALIZAR ESTADO DEL TRÁMITE ---")
     codigo_buscar = input("Ingrese el código del expediente:").strip().upper()
@@ -11,24 +12,32 @@ def actualizar_estado_tramite(codigos, estados, total):
 
     if posicion != -1:
         print(f"Expediente encontrado. Estado actual: {estados[posicion]}")
+        estado_original = estados[posicion]
+
         print("1. PENDIENTE")
         print("2. EN PROCESO")
         print("3. ATENDIDO")
         print("4. RECHAZADO")
 
         opcion = input("Seleccione el nuevo estado (1-4): ").strip()
+        nuevo_estado = ""
 
         if opcion == "1":
-            estados[posicion] = "PENDIENTE"
+            nuevo_estado[posicion] = "PENDIENTE"
         elif opcion == "2":
-            estados[posicion] = "EN PROCESO"
+            nuevo_estado[posicion] = "EN PROCESO"
         elif opcion == "3":
-            estados[posicion] = "ATENDIDO"
+            nuevo_estado[posicion] = "ATENDIDO"
         elif opcion == "4":
-            estados[posicion] = "RECHAZADO"
+            nuevo_estado[posicion] = "RECHAZADO"
         else:
             print("Opción no válida. No se realizaron cambios.")
             return
+
+        if nuevo_estado == estado_original:
+            print(f"[!] Alerta: El expediente ya se encuentra en estado {estado_original}.")
+        else:
+            estados[posicion] = nuevo_estado
             
         print(f"¡Éxito! El estado se actualizó a: {estados[posicion]}")
     else:
