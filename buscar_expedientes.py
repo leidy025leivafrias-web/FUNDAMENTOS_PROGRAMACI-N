@@ -16,6 +16,10 @@ def buscar_expedientes(codigos, apoPat, apoMat, apoNom, apoDni, apoTelf, estPat,
                 print(f"Estado Actual: {estados[i]}")
                 encontrado = True
                 break
+        if not encontrado:
+            print(f"No se encuentro ningun expediente con el codigo: {codigoBuscar}")
+        else:
+            print("No hay expedientes registrados en el sistema")    
 
 
 
