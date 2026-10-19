@@ -23,13 +23,13 @@ def actualizar_estado_tramite(codigos, estados, total):
         nuevo_estado = ""
 
         if opcion == "1":
-            nuevo_estado[posicion] = "PENDIENTE"
+            nuevo_estado = "PENDIENTE"
         elif opcion == "2":
-            nuevo_estado[posicion] = "EN PROCESO"
+            nuevo_estado = "EN PROCESO"
         elif opcion == "3":
-            nuevo_estado[posicion] = "ATENDIDO"
+            nuevo_estado = "ATENDIDO"
         elif opcion == "4":
-            nuevo_estado[posicion] = "RECHAZADO"
+            nuevo_estado = "RECHAZADO"
         else:
             print("Opción no válida. No se realizaron cambios.")
             return
@@ -38,7 +38,6 @@ def actualizar_estado_tramite(codigos, estados, total):
             print(f"[!] Alerta: El expediente ya se encuentra en estado {estado_original}.")
         else:
             estados[posicion] = nuevo_estado
-            
-        print(f"¡Éxito! El estado se actualizó a: {estados[posicion]}")
+            print(f"¡Éxito! El estado se actualizó a: {estados[posicion]}")
     else:
         print("Error: El código ingresado no existe.")
