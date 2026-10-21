@@ -5,58 +5,58 @@ def ordenar_expedientes_por_codigo(codigos, apo_pat, apo_mat, apo_nom, apo_dni, 
 
     cantidad = len(codigos)
 
-    for a in range(cantidad - 1):
-        for m in range(cantidad - 1 - a):
+    for i in range(cantidad - 1):
+        for j in range(cantidad - 1 - i):
 
-            if codigos[m] > codigos[m + 1]:
+            if codigos[j] > codigos[j + 1]:
 
-                auxiliar = codigos[m]
-                codigos[m] = codigos[m + 1]
-                codigos[m + 1] = auxiliar
+                auxiliar = codigos[j]
+                codigos[j] = codigos[j + 1]
+                codigos[j + 1] = auxiliar
 
-                auxiliar = apo_pat[m]
-                apo_pat[m] = apo_pat[m + 1]
-                apo_pat[m + 1] = auxiliar
+                auxiliar = apo_pat[j]
+                apo_pat[j] = apo_pat[j + 1]
+                apo_pat[j + 1] = auxiliar
 
-                auxiliar = apo_mat[m]
-                apo_mat[m] = apo_mat[m + 1]
-                apo_mat[m + 1] = auxiliar
+                auxiliar = apo_mat[j]
+                apo_mat[j] = apo_mat[j + 1]
+                apo_mat[j + 1] = auxiliar
 
-                auxiliar = apo_nom[m]
-                apo_nom[m] = apo_nom[m + 1]
-                apo_nom[m + 1] = auxiliar
+                auxiliar = apo_nom[j]
+                apo_nom[j] = apo_nom[j + 1]
+                apo_nom[j + 1] = auxiliar
 
-                auxiliar = apo_dni[m]
-                apo_dni[m] = apo_dni[m + 1]
-                apo_dni[m + 1] = auxiliar
+                auxiliar = apo_dni[j]
+                apo_dni[j] = apo_dni[j + 1]
+                apo_dni[j + 1] = auxiliar
 
-                auxiliar = apo_telf[m]
-                apo_telf[m] = apo_telf[m + 1]
-                apo_telf[m + 1] = auxiliar
+                auxiliar = apo_telf[j]
+                apo_telf[j] = apo_telf[j + 1]
+                apo_telf[j + 1] = auxiliar
 
-                auxiliar = est_pat[m]
-                est_pat[m] = est_pat[m + 1]
-                est_pat[m + 1] = auxiliar
+                auxiliar = est_pat[j]
+                est_pat[j] = est_pat[j + 1]
+                est_pat[j + 1] = auxiliar
 
-                auxiliar = est_mat[m]
-                est_mat[m] = est_mat[m + 1]
-                est_mat[m + 1] = auxiliar
+                auxiliar = est_mat[j]
+                est_mat[j] = est_mat[j + 1]
+                est_mat[j + 1] = auxiliar
 
-                auxiliar = est_nom[m]
-                est_nom[m] = est_nom[m + 1]
-                est_nom[m + 1] = auxiliar
+                auxiliar = est_nom[j]
+                est_nom[j] = est_nom[j + 1]
+                est_nom[j + 1] = auxiliar
 
-                auxiliar = niveles[m]
-                niveles[m] = niveles[m + 1]
-                niveles[m + 1] = auxiliar
+                auxiliar = niveles[j]
+                niveles[j] = niveles[j + 1]
+                niveles[j + 1] = auxiliar
 
-                auxiliar = asuntos[m]
-                asuntos[m] = asuntos[m + 1]
-                asuntos[m + 1] = auxiliar
+                auxiliar = asuntos[j]
+                asuntos[j] = asuntos[j + 1]
+                asuntos[j + 1] = auxiliar
 
-                auxiliar = estados[m]
-                estados[m] = estados[m + 1]
-                estados[m + 1] = auxiliar
+                auxiliar = estados[j]
+                estados[j] = estados[j + 1]
+                estados[j + 1] = auxiliar
 
     print("Expedientes ordenados correctamente.")
 
@@ -69,18 +69,18 @@ def buscar_expediente_por_codigo(codigos, apo_pat, apo_mat, apo_nom,
 
     encontrado = False
 
-    for a in range(len(codigos)):
-        if codigos[a] == codigo_buscar:
+    for i in range(len(codigos)):
+        if codigos[i] == codigo_buscar:
 
             print("EXPEDIENTE ENCONTRADO")
-            print("Codigo:", codigos[a])
-            print("Apoderado:", apo_pat[a], apo_mat[a], apo_nom[a])
-            print("DNI:", apo_dni[a])
-            print("Telefono:", apo_telf[a])
-            print("Estudiante:", est_pat[a], est_mat[a], est_nom[a])
-            print("Nivel:", niveles[a])
-            print("Asunto:", asuntos[a])
-            print("Estado:", estados[a])
+            print("Codigo:", codigos[i])
+            print("Apoderado:", apo_pat[i], apo_mat[i], apo_nom[i])
+            print("DNI:", apo_dni[i])
+            print("Telefono:", apo_telf[i])
+            print("Estudiante:", est_pat[i], est_mat[i], est_nom[i])
+            print("Nivel:", niveles[i])
+            print("Asunto:", asuntos[i])
+            print("Estado:", estados[i])
 
             encontrado = True
 
@@ -95,19 +95,19 @@ def buscar_expediente_por_codigo(codigos, apo_pat, apo_mat, apo_nom,
 
     encontrado = False
 
-    for a in range(len(codigos)):
+    for i in range(len(codigos)):
 
-        if codigos[a] == codigo_buscar:
+        if codigos[i] == codigo_buscar:
 
             print("EXPEDIENTE ENCONTRADO")
-            print("Codigo:", codigos[a])
-            print("Apoderado:", apo_pat[a], apo_mat[a], apo_nom[a])
-            print("DNI:", apo_dni[a])
-            print("Telefono:", apo_telf[a])
-            print("Estudiante:", est_pat[a], est_mat[a], est_nom[a])
-            print("Nivel:", niveles[a])
-            print("Asunto:", asuntos[a])
-            print("Estado:", estados[a])
+            print("Codigo:", codigos[i])
+            print("Apoderado:", apo_pat[i], apo_mat[i], apo_nom[i])
+            print("DNI:", apo_dni[i])
+            print("Telefono:", apo_telf[i])
+            print("Estudiante:", est_pat[i], est_mat[i], est_nom[i])
+            print("Nivel:", niveles[i])
+            print("Asunto:", asuntos[i])
+            print("Estado:", estados[i])
 
             encontrado = True
 
@@ -140,16 +140,16 @@ ordenar_expedientes_por_codigo(
 
 
 # Mostrar los expedientes ordenados
-for a in range(len(codigos)):
+for i in range(len(codigos)):
     print("------------------------------")
-    print("Codigo:", codigos[a])
-    print("Apoderado:", apo_pat[a], apo_mat[a], apo_nom[a])
-    print("DNI:", apo_dni[a])
-    print("Telefono:", apo_telf[a])
-    print("Estudiante:", est_pat[a], est_mat[a], est_nom[a])
-    print("Nivel:", niveles[a])
-    print("Asunto:", asuntos[a])
-    print("Estado:", estados[a])
+    print("Codigo:", codigos[i])
+    print("Apoderado:", apo_pat[i], apo_mat[i], apo_nom[i])
+    print("DNI:", apo_dni[i])
+    print("Telefono:", apo_telf[i])
+    print("Estudiante:", est_pat[i], est_mat[i], est_nom[i])
+    print("Nivel:", niveles[i])
+    print("Asunto:", asuntos[i])
+    print("Estado:", estados[i])
 
 
 
