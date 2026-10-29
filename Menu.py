@@ -43,13 +43,13 @@ def main():
 
         elif opcion == '2':
             print("\n--- Listar Todos ---")
-            # Agrega aquí tu lógica
+            
         elif opcion == '3':
             print("\n--- Buscar por Código ---")
-            # Agrega aquí tu lógica
+            
         elif opcion == '4':
             print("\n--- Ordenar por Código ---")
-            # Agrega aquí tu lógica
+            
         elif opcion == '5':
             print("\n--- Actualizar Estado ---")
             # Agrega aquí tu lógica
