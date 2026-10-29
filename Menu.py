@@ -1,3 +1,6 @@
+
+from actualizar_tramite import actualizar_estado_tramite
+
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
     print("===============================================")
@@ -14,38 +17,47 @@ def mostrar_menu():
     print("Seleccione una opción:")
 
 def main():
+    MAX = 100
+    codigos = [""] * MAX
+    estados = [""] * MAX
+    totalExpedientes = 0
+
     while True:
         mostrar_menu()
-        opcion = input("> ")
+        opcion = input(" >")
         
         if opcion == '1':
             print("\n--- Registrar Nuevo Expediente ---")
-            # Agrega aquí tu lógica
+    
         elif opcion == '2':
             print("\n--- Listar Todos ---")
-            # Agrega aquí tu lógica
+         
         elif opcion == '3':
             print("\n--- Buscar por Código ---")
-            # Agrega aquí tu lógica
+        
         elif opcion == '4':
             print("\n--- Ordenar por Código ---")
-            # Agrega aquí tu lógica
+        
         elif opcion == '5':
-            print("\n--- Actualizar Estado ---")
-            # Agrega aquí tu lógica
+            #Actualizar Estado 
+            if totalExpedientes > 0:
+                actualizar_estado_tramite(codigos, estados, totalExpedientes)
+            else:
+                print("\n  No hay expedientes registrados en el sistema.")
+
+        
         elif opcion == '6':
             print("\n--- Registrar Calificaciones ---")
-            # Agrega aquí tu lógica
+        
         elif opcion == '7':
             print("\n--- Guardar en Archivo ---")
-            # Agrega aquí tu lógica
+        
         elif opcion == '8':
             print("\nSaliendo del sistema...")
             break
         else:
             print("\nOpción inválida. Intente de nuevo.")
         
-        input("\nPresione Enter para continuar...")
 
 if __name__ == "__main__":
     main()
