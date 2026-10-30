@@ -1,6 +1,6 @@
 def validar_correo():
     while True:
-        correo = input("Ingrese el correo electrónico: ")
+        correo = input("6.CORREO ELECTRÓNICO: ")
 
         if " " in correo:
             print("ERROR: El correo no debe contener espacios.")
@@ -11,8 +11,9 @@ def validar_correo():
         elif correo.split("@")[1] != "gmail.com":
             print("ERROR: El correo debe terminar en gmail.com.")
         else:
-            print("Correo registrado correctamente.")
+            print("*Correo registrado correctamente.*")
             return correo
 
-correo = validar_correo()
-print("Correo registrado:", correo)
+if __name__ == "__main__":
+    correo = validar_correo()
+    print("Correo registrado:", correo)
