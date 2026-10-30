@@ -4,15 +4,16 @@ from Validar_nombre_estudiante import validar_nombres_estudiante
 from Validar_numero import validar_numero
 from Validar_Nivel_Educativo_del_estudiante import Validar_Nivel_Educativo_del_estudiante
 from Validar_correo import validar_correo
-
+from Codigo_expediente import Codigo_expediente
 from listado_expedientes import listado_expedientes
+
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
     print("===============================================")
     print("  MESA DE PARTES DIGITAL - FE Y ALEGRÍA Nº 37")
     print("===============================================")
     print("1. Registrar Nuevo Expediente")
-    print("2. Listar Todos")
+    print("2. Listar expediente")
     print("3. Buscar por Código")
     print("4. Ordenar por Código")
     print("5. Actualizar Estado")
@@ -36,9 +37,24 @@ def main():
             dni_estudiante = validar_dni_estudiante()
             nombre_estudiante, paterno_estudiante, materno_estudiante = validar_nombres_estudiante()
             nivel = Validar_Nivel_Educativo_del_estudiante()
+            codigo = Codigo_expediente(expedientes)
+            expediente = {
+                "codigo": codigo,
+                "dni_estudiante": dni_estudiante,
+                "nombre_estudiante": nombre_estudiante,
+                "paterno_estudiante": paterno_estudiante,
+                "materno_estudiante": materno_estudiante,
+                "nivel": nivel,
+                "estado": "Pendiente"
+            }
+
+            expedientes.append(expediente)
+            print("Expediente registrado correctamente.")
+            print("Código asignado:", codigo)
+
         elif opcion == '2':
-            print("\n--- Listar Todos ---")
-            
+            print("\n<<<<< LISTADO GENERAL DE EXPEDIENTES >>>>>")
+            listado_expedientes(expedientes)
         elif opcion == '3':
             print("\n--- Buscar por Código ---")
             
