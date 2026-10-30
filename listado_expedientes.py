@@ -1,15 +1,16 @@
-# VALIDAR TRÁMITE A REALIZAR
-while True:
-    tramite = input("Ingrese el trámite que desea realizar: ")
+#FUNCIÓN 5: lista de expedientes.
+def listado_expedientes(expedientes):
+    if not expedientes:
+        print("No hay expedientes para mostrar.")
+        return
     
-    # Reemplazamos los espacios para verificar si todo lo demás son letras
-    if not tramite.replace(" ", "").isalpha():
-        print("ERROR: El trámite solo debe contener letras y espacios.")
-    else:
-        print("Trámite registrado correctamente.\n")
-        break
+    for numero, expediente in enumerate(expedientes,start=1):
+        print(f"\n EXPEDIENTE N° {numero}")
+        print("CODIGO: ", expediente["codigo"])
+        print("DNI DEL ESTUDIANTE: ", expediente["dni_estudiante"])
+        print("ESTUDIANTE: ", expediente["nombre_estudiante"],expediente["paterno_estudiante"], expediente["materno_estudiante"])
+        print("NIVEL EDUCATIVO: ",expediente["nivel"])
+        print("ESTADO: ",expediente["estado"])
+        print("-"*50)
 
-# MOSTRAR RESULTADO FINAL
-print("=" * 30)
-print(f"TRÁMITE SELECCIONADO: {tramite}")
-print("=" * 30)
+    print("\nTOTAL DE EXPEDIENTES: ", len(expedientes))

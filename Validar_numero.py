@@ -1,7 +1,8 @@
 
-def validar_telefono():
+def validar_numero():
+    print("\nPASO 2: ----CONTACTO DEL APODERADO----")
     while True:
-        telefono = input("Ingrese el número de teléfono (9 dígitos): ")
+        telefono = input("\n 5. NÚMERO DE CELULAR (9 dígitos): ")
         if " " in telefono:
             print("ERROR: El teléfono no debe contener espacios en blanco.")
         elif not telefono.isdigit():
@@ -9,8 +10,9 @@ def validar_telefono():
         elif len(telefono) != 9:
             print("ERROR: El número de teléfono debe tener exactamente 9 dígitos.")
         else:
-            print("Número de teléfono registrado correctamente.")
+            print("*Número de teléfono registrado correctamente.*")
             return telefono
 
-telefono_usuario = validar_telefono()
-print("Teléfono registrado:", telefono_usuario)
+if __name__ == "__main__":
+    telefono_usuario = validar_numero()
+    print("Teléfono registrado:", telefono_usuario)

@@ -1,8 +1,8 @@
 
 def validar_dni_apoderado():
-    print("PASO 2:")
+    print("\n---- PASO 1: IDENTIFICACIÓN DEL APODERADO----")
     while True:
-        dni = input("Ingrese el DNI del apoderado (8 dígitos): ")
+        dni = input("\n1. INGRESE EL DNI DEL APODERADO (8 dígitos): ")
         if " " in dni:
             print("ERROR: El DNI no debe contener espacios en blanco.")
         elif not dni.isdigit():
@@ -10,7 +10,7 @@ def validar_dni_apoderado():
         elif len(dni) != 8:
             print("ERROR: El DNI debe tener exactamente 8 dígitos.")
         else:
-            print("DNI del apoderado registrado correctamente.")
+            print("*DNI del apoderado registrado correctamente.*")
             return dni
 if __name__ == "__main__":
   dni_apoderado = validar_dni_apoderado()
@@ -18,8 +18,9 @@ if __name__ == "__main__":
   print("DNI registrado:", dni_apoderado)
 
 def validar_dni_estudiante():
+    print("\nPASO 3: ---- IDENTIFICACIÓN DEL ESTUDIANTE ---")
     while True:
-        dni = input("Ingrese el DNI del estudiante (8 dígitos): ")
+        dni = input("7. INGRESE EL DNI DEL ESTUDIANTE (8 dígitos): ")
 
         if " " in dni:
             print("ERROR: El DNI no debe contener espacios en blanco.")
@@ -28,5 +29,5 @@ def validar_dni_estudiante():
         elif len(dni) != 8:
             print("ERROR: El DNI debe tener exactamente 8 dígitos.")
         else:
-            print("DNI del estudiante registrado correctamente.")
+            print("*DNI del estudiante registrado correctamente.*")
             return dni
