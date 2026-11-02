@@ -7,6 +7,7 @@ from Validar_correo import validar_correo
 from Codigo_expediente import Codigo_expediente
 from listado_expedientes import listado_expedientes
 from actualizar_tramite import actualizar_estado_tramite
+from Expedientes import Expedientes
 
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
@@ -70,7 +71,10 @@ def main():
                  print("\nNo hay expedientes registrados en el sistema.")
         elif opcion == '6':
             print("\n<<<<< REGISTRAR CALIFICACIONES >>>>>")
-            # Agrega aquí tu lógica
+            if len(expedientes) > 0:
+                Expedientes(expedientes)
+            else:
+                print("No hay expedientes registrados.")
         elif opcion == '7':
             print("\n--- Guardar en Archivo ---")
             # Agrega aquí tu lógica
