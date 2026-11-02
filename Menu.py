@@ -6,6 +6,7 @@ from Validar_Nivel_Educativo_del_estudiante import Validar_Nivel_Educativo_del_e
 from Validar_correo import validar_correo
 from Codigo_expediente import Codigo_expediente
 from listado_expedientes import listado_expedientes
+from buscar_expedientes import buscar_expedientes
 from actualizar_tramite import actualizar_estado_tramite
 from Expedientes import Expedientes
 
@@ -42,11 +43,23 @@ def main():
             codigo = Codigo_expediente(expedientes)
             expediente = {
                 "codigo": codigo,
+
+                #DATOS DEL APODERADO
+                "dni_apoderado": dni_apoderado,
+                "nombre_apoderado": nombre,
+                "paterno_apoderado": paterno,
+                "materno_apoderado": materno,
+                "telefono_apoderado": telefono_apoderado,
+                "correo_apoderado": correo_apoderado,
+
+                #DATOS DEL ESTUDIANTE
                 "dni_estudiante": dni_estudiante,
                 "nombre_estudiante": nombre_estudiante,
                 "paterno_estudiante": paterno_estudiante,
                 "materno_estudiante": materno_estudiante,
                 "nivel": nivel,
+
+                #ESTADO DEL TRÁMITE
                 "estado": "Pendiente"
             }
 
@@ -59,7 +72,7 @@ def main():
             listado_expedientes(expedientes)
         elif opcion == '3':
             print("\n<<<<< BUSQUEDA POR CÓDIGO >>>>>")
-            
+            buscar_expedientes(expedientes)
         elif opcion == '4':
             print("\n--<<<<< ORDENAR POR CÓDIGO >>>>>")
             

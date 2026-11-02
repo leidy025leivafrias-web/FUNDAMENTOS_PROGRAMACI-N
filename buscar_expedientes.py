@@ -1,31 +1,37 @@
-def buscar_expedientes(codigos, apoPat, apoMat, apoNom, apoDni, apoTelf, estPat, estMat, estNom, niveles, estados, asuntos,nota1, nota2, nota3, nota4, promedios, totalExpedientes):
-    if totalExpedientes > 0:
-        print("\n --- Busqueda de Expedientes ---")
-        codigoBuscar = input("Ingrese el Codigo del Expedientes (Ej. EXP-1001)").strip().upper()
+def buscar_expedientes(expedientes):
+    if len(expedientes) > 0:
+        print("\n --- BUSQUEDA DE EXPEDIENTES ---")
+        codigoBuscar = input("Ingrese el Codigo del Expedientes (Ej. EXP001): ").strip().upper()
         encontrado = False
         
-        for i in range(totalExpedientes):
-            if codigos[i] == codigoBuscar:
-                print("Expediente Encontrado:")
-                print(f"Codigo: {codigos[i]}")
-                print(f"Apoderado: {apoPat[i]}, {apoMat[i]}, {apoNom[i]}")
-                print(f"DNI: {apoDni[i]} | Telefono: {apoTelf[i]}")
-                print(f"Estudiante: {estPat[i]}, {estMat[i]}, {estNom[i]}")
-                print(f"Nivel Educativo: {niveles[i]}")
-                print(f"Asunto: {asuntos[i]}")
-                print(f"Estado Actual: {estados[i]}")
-                print("--- Registro Academico (4 Bimestres)---")
-                print(f"Notas: [Bim 1:{nota1[i]} | Bin 2:{nota2[i]} | Bin 3:{nota3[i]} | Bin 4:{nota4[i]}")
-                print(f"Promedio Final: {promedios[i]}")
-                if promedios[i]>= 11:
-                    print(f"Condicon Academica: Aprobado")
+        for expediente in expedientes:
+            if expediente["codigo"].upper() == codigoBuscar:
+                print("\nEXPEDIENTE ENCONTRADO:")
+                print(f"CÓDIGO: ", expediente["codigo"])
+                print(f"\nAPODERADO: ", expediente ["nombre_apoderado"], expediente["paterno_apoderado"], expediente["materno_apoderado"])
+                print(f"DNI: ",expediente["dni_apoderado"])
+                print(f"TELÉFONO: ",expediente["telefono_apoderado"])
+                print(f"CORREO: ",expediente["correo_apoderado"])
+                print(f"\nESTUDIANTE: ", expediente["nombre_estudiante"], expediente ["paterno_estudiante"],expediente ["materno_estudiante"])
+                print(f"DNI: ", expediente["dni_estudiante"])
+                print(f"NIVEL EDUCATIVO: ",expediente ["nivel"])
+                print(f"\nESTADO ACTUAL: ",expediente ["estado"])
+                
+                if "calificaciones" in expediente:
+                     notas = expediente["calificaciones"]
+                     print("\n--- REGISTRO ACADÉMICO (4 Bimestres)---")
+                     print("I Bimestre: ", notas ["bimestre1"])
+                     print("II Bimestre: ",notas ["bimestre2"])
+                     print("III Bimestre: ",notas ["bimestre3"])
+                     print("Promedio final: ",notas ["promedio"])
+                     print("Condición académica: ",notas ["estado_académico"])
                 else:
-                    print("Condicion Academica: Desaprobado")
-                encontrado = True
-                break
+                   print("\nEl estudiante todavía no tiene calificaciones registradas.")
+                   encontrado = True
+                   break
         if not encontrado:
             print(f"No se encuentro ningun expediente con el codigo: {codigoBuscar}")
-        else:
+    else:
             print("No hay expedientes registrados en el sistema")    
 
        
