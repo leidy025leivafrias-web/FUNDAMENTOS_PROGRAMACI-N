@@ -6,6 +6,7 @@ from Validar_Nivel_Educativo_del_estudiante import Validar_Nivel_Educativo_del_e
 from Validar_correo import validar_correo
 from Codigo_expediente import Codigo_expediente
 from listado_expedientes import listado_expedientes
+from actualizar_tramite import actualizar_estado_tramite
 
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
@@ -56,16 +57,19 @@ def main():
             print("\n<<<<< LISTADO GENERAL DE EXPEDIENTES >>>>>")
             listado_expedientes(expedientes)
         elif opcion == '3':
-            print("\n--- Buscar por Código ---")
+            print("\n<<<<< BUSQUEDA POR CÓDIGO >>>>>")
             
         elif opcion == '4':
-            print("\n--- Ordenar por Código ---")
+            print("\n--<<<<< ORDENAR POR CÓDIGO >>>>>")
             
         elif opcion == '5':
-            print("\n--- Actualizar Estado ---")
-            # Agrega aquí tu lógica
+             print("\n<<<<< ACTUALIZAR ESTADO >>>>>")
+             if len(expedientes) > 0:
+                 actualizar_estado_tramite(expedientes)
+             else:
+                 print("\nNo hay expedientes registrados en el sistema.")
         elif opcion == '6':
-            print("\n--- Registrar Calificaciones ---")
+            print("\n<<<<< REGISTRAR CALIFICACIONES >>>>>")
             # Agrega aquí tu lógica
         elif opcion == '7':
             print("\n--- Guardar en Archivo ---")
