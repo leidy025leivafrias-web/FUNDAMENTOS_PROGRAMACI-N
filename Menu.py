@@ -7,6 +7,7 @@ from Validar_correo import validar_correo
 from Codigo_expediente import Codigo_expediente
 from listado_expedientes import listado_expedientes
 from buscar_expedientes import buscar_expedientes
+from OrdenarExpedientes import ordenar_expedientes_por_codigo
 from actualizar_tramite import actualizar_estado_tramite
 from Expedientes import Expedientes
 
@@ -75,7 +76,7 @@ def main():
             buscar_expedientes(expedientes)
         elif opcion == '4':
             print("\n--<<<<< ORDENAR POR CÓDIGO >>>>>")
-            
+            ordenar_expedientes_por_codigo(expedientes)
         elif opcion == '5':
              print("\n<<<<< ACTUALIZAR ESTADO >>>>>")
              if len(expedientes) > 0:
