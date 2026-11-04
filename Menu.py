@@ -11,6 +11,7 @@ from OrdenarExpedientes import ordenar_expedientes_por_codigo
 from actualizar_tramite import actualizar_estado_tramite
 from Expedientes import Expedientes
 from guardado import guardar_expedientes
+from Cargar_expedientes import cargar_expedientes
 
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
@@ -28,7 +29,7 @@ def mostrar_menu():
     print("Seleccione una opción:")
 
 def main():
-    expedientes = []
+    expedientes = cargar_expedientes()
     while True:
         mostrar_menu()
         opcion = input("> ")
