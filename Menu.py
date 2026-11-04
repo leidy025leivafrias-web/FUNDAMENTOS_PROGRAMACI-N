@@ -10,6 +10,7 @@ from buscar_expedientes import buscar_expedientes
 from OrdenarExpedientes import ordenar_expedientes_por_codigo
 from actualizar_tramite import actualizar_estado_tramite
 from Expedientes import Expedientes
+from guardado import guardar_expedientes
 
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
@@ -90,8 +91,8 @@ def main():
             else:
                 print("No hay expedientes registrados.")
         elif opcion == '7':
-            print("\n--- Guardar en Archivo ---")
-            # Agrega aquí tu lógica
+            print("\n<<<<< GUARDAR EXPEDIENTE >>>>>")
+            guardar_expedientes(expedientes)
         elif opcion == '8':
             print("\nSaliendo del sistema...")
             break

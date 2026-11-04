@@ -227,6 +227,16 @@ def Expedientes(expedientes):
                 bimestre3[i] = leer_nota_valida("Nuevo III Bimestre: ")
 
                 calcular_promedio(i)
+                for expediente in expedientes:
+                    if expediente["codigo"] == codigos_exp[i]:
+                        expediente["calificaciones"] = {
+                            "bimestre1": bimestre1[i],
+                            "bimestre2": bimestre2[i],
+                            "bimestre3": bimestre3[i],
+                            "promedio": promedios_finales[i],
+                            "estado_academico": estados[i]
+                            }
+                        break 
 
                 print(
                     f"Actualización exitosa. Promedio final: "
@@ -316,7 +326,7 @@ def Expedientes(expedientes):
 
         opcion = 0
 
-        while opcion != 5:
+        while opcion != 6:
             print("\n============================================================")
             print("          SISTEMA DE REGISTRO DE CALIFICACIONES")
             print("============================================================")
@@ -325,7 +335,7 @@ def Expedientes(expedientes):
             print("3. Ordenar registros por promedio final (mayor a menor)")
             print("4. Actualizar calificaciones de los bimestres")
             print("5. Listar todos los registros")
-            print("6. Guardar y salir")
+            print("6. Guardar y volver al menú principal")
 
             try:
                 opcion = int(input("\nSeleccione una opción (1-6): "))
@@ -344,8 +354,9 @@ def Expedientes(expedientes):
             elif opcion == 5:
                 listar_registros()    
             elif opcion == 6:
-                guardar_en_archivo(total_registros)
-                print("Saliendo del sistema. ¡Hasta luego!")
+                print("Regresando al menú principal...")
+                print("Para guardar todos los datos, selecciona la opción 7.")
+                break
             else:
                 print("Opción no válida. Intente de nuevo.")
     main()
