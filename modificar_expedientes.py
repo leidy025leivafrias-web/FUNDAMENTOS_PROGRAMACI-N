@@ -27,7 +27,10 @@ def modificar_expediente(expedientes):
 
                 print("\n¡Datos del expediente actualizado con exito!")
                 break
-
+        if not encontrado:
+            print(f"No encontro ningun expediente con el codigo{codigoBuscar}")
+    else:
+        print("No hay expedientes registrados")
 
 
 
