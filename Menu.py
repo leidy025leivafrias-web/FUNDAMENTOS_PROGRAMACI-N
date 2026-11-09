@@ -1,5 +1,14 @@
-
+from Validar_dni import validar_dni_apoderado, validar_dni_estudiante
+from Validar_nombres_del_apoderado import Validar__nombres_del_apoderado
+from Validar_nombre_estudiante import validar_nombres_estudiante
+from Validar_numero import validar_numero
+from Validar_Nivel_Educativo_del_estudiante import Validar_Nivel_Educativo_del_estudiante
+from Validar_correo import validar_correo
+from Codigo_expediente import Codigo_expediente
+from listado_expedientes import listado_expedientes
+from buscar_expedientes import buscar_expedientes
 from actualizar_tramite import actualizar_estado_tramite
+from Expedientes import Expedientes
 
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
@@ -7,7 +16,7 @@ def mostrar_menu():
     print("  MESA DE PARTES DIGITAL - FE Y ALEGRÍA Nº 37")
     print("===============================================")
     print("1. Registrar Nuevo Expediente")
-    print("2. Listar Todos")
+    print("2. Listar expediente")
     print("3. Buscar por Código")
     print("4. Ordenar por Código")
     print("5. Actualizar Estado")
@@ -22,6 +31,7 @@ def main():
     estados = [""] * MAX
     totalExpedientes = 0
 
+    expedientes = []
     while True:
         mostrar_menu()
         opcion = input(" >")
@@ -49,6 +59,62 @@ def main():
         elif opcion == '6':
             print("\n--- Registrar Calificaciones ---")
         
+            print("\n <<<<<REGISTRAR NUEVO EXPEDIENTE>>>>> ")
+            dni_apoderado = validar_dni_apoderado()
+            nombre, paterno, materno = Validar__nombres_del_apoderado()
+            telefono_apoderado = validar_numero()
+            correo_apoderado = validar_correo()
+            dni_estudiante = validar_dni_estudiante()
+            nombre_estudiante, paterno_estudiante, materno_estudiante = validar_nombres_estudiante()
+            nivel = Validar_Nivel_Educativo_del_estudiante()
+            codigo = Codigo_expediente(expedientes)
+            expediente = {
+                "codigo": codigo,
+
+                #DATOS DEL APODERADO
+                "dni_apoderado": dni_apoderado,
+                "nombre_apoderado": nombre,
+                "paterno_apoderado": paterno,
+                "materno_apoderado": materno,
+                "telefono_apoderado": telefono_apoderado,
+                "correo_apoderado": correo_apoderado,
+
+                #DATOS DEL ESTUDIANTE
+                "dni_estudiante": dni_estudiante,
+                "nombre_estudiante": nombre_estudiante,
+                "paterno_estudiante": paterno_estudiante,
+                "materno_estudiante": materno_estudiante,
+                "nivel": nivel,
+
+                #ESTADO DEL TRÁMITE
+                "estado": "Pendiente"
+            }
+
+            expedientes.append(expediente)
+            print("Expediente registrado correctamente.")
+            print("Código asignado:", codigo)
+
+        elif opcion == '2':
+            print("\n<<<<< LISTADO GENERAL DE EXPEDIENTES >>>>>")
+            listado_expedientes(expedientes)
+        elif opcion == '3':
+            print("\n<<<<< BUSQUEDA POR CÓDIGO >>>>>")
+            buscar_expedientes(expedientes)
+        elif opcion == '4':
+            print("\n--<<<<< ORDENAR POR CÓDIGO >>>>>")
+            
+        elif opcion == '5':
+             print("\n<<<<< ACTUALIZAR ESTADO >>>>>")
+             if len(expedientes) > 0:
+                 actualizar_estado_tramite(expedientes)
+             else:
+                 print("\nNo hay expedientes registrados en el sistema.")
+        elif opcion == '6':
+            print("\n<<<<< REGISTRAR CALIFICACIONES >>>>>")
+            if len(expedientes) > 0:
+                Expedientes(expedientes)
+            else:
+                print("No hay expedientes registrados.")
         elif opcion == '7':
             print("\n--- Guardar en Archivo ---")
         
