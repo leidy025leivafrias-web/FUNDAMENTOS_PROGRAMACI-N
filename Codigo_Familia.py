@@ -1,5 +1,8 @@
-# REGISTRO DE DATOS DE LA MADRE
 
+# CONTADOR PARA GENERAR CODIGOS UNICOS
+contador = 1
+
+# REGISTRO DE DATOS DE LA MADRE
 
 # VALIDAR APELLIDO PATERNO DE LA MADRE
 while True:
@@ -40,10 +43,12 @@ while True:
         print("Nombre de la madre registrado correctamente.\n")
         break
 
+# GENERAR CODIGO DE LA MADRE
+codigo_madre = "MAD" + str(contador).zfill(3)
+contador += 1
 
 
 # REGISTRO DE DATOS DEL ESTUDIANTE
-
 
 # VALIDAR APELLIDO PATERNO DEL ESTUDIANTE
 while True:
@@ -84,66 +89,73 @@ while True:
         print("Nombre del estudiante registrado correctamente.\n")
         break
 
+# GENERAR CODIGO DEL ESTUDIANTE
+codigo_estudiante = "EST" + str(contador).zfill(3)
+contador += 1
 
 
-# REGISTRO DE DATOS DEL APODERADO
+# REGISTRO DE DATOS DEL PADRE
 
-
-# VALIDAR APELLIDO PATERNO DEL APODERADO
+# VALIDAR APELLIDO PATERNO DEL PADRE
 while True:
-    paterno_apoderado = input("Ingrese el apellido paterno del apoderado: ")
+    paterno_padre = input("Ingrese el apellido paterno del padre: ")
 
-    if not paterno_apoderado.strip():
+    if not paterno_padre.strip():
         print("ERROR: No puede dejar el apellido paterno en blanco.")
-    elif not paterno_apoderado.replace(" ", "").isalpha():
+    elif not paterno_padre.replace(" ", "").isalpha():
         print("ERROR: El apellido solo debe contener letras.")
     else:
-        paterno_apoderado = paterno_apoderado.strip()
-        print("Apellido paterno del apoderado registrado correctamente.\n")
+        paterno_padre = paterno_padre.strip()
+        print("Apellido paterno del padre registrado correctamente.\n")
         break
 
-# VALIDAR APELLIDO MATERNO DEL APODERADO
+# VALIDAR APELLIDO MATERNO DEL PADRE
 while True:
-    materno_apoderado = input("Ingrese el apellido materno del apoderado: ")
+    materno_padre = input("Ingrese el apellido materno del padre: ")
 
-    if not materno_apoderado.strip():
+    if not materno_padre.strip():
         print("ERROR: No puede dejar el apellido materno en blanco.")
-    elif not materno_apoderado.replace(" ", "").isalpha():
+    elif not materno_padre.replace(" ", "").isalpha():
         print("ERROR: El apellido solo debe contener letras.")
     else:
-        materno_apoderado = materno_apoderado.strip()
-        print("Apellido materno del apoderado registrado correctamente.\n")
+        materno_padre = materno_padre.strip()
+        print("Apellido materno del padre registrado correctamente.\n")
         break
 
-# VALIDAR NOMBRE COMPLETO DEL APODERADO
+# VALIDAR NOMBRE COMPLETO DEL PADRE
 while True:
-    nombre_apoderado = input("Ingrese el nombre completo del apoderado: ")
+    nombre_padre = input("Ingrese el nombre completo del padre: ")
 
-    if not nombre_apoderado.strip():
+    if not nombre_padre.strip():
         print("ERROR: No puede dejar el nombre en blanco.")
-    elif not nombre_apoderado.replace(" ", "").isalpha():
+    elif not nombre_padre.replace(" ", "").isalpha():
         print("ERROR: El nombre solo debe contener letras y espacios.")
     else:
-        nombre_apoderado = nombre_apoderado.strip()
-        print("Nombre del apoderado registrado correctamente.\n")
+        nombre_padre = nombre_padre.strip()
+        print("Nombre del padre registrado correctamente.\n")
         break
 
+# GENERAR CODIGO DEL PADRE
+codigo_padre = "PAD" + str(contador).zfill(3)
+contador += 1
 
 
 # MOSTRAR RESULTADOS FINALES
-
 
 print("=" * 45)
 print("       DATOS REGISTRADOS CORRECTAMENTE")
 print("=" * 45)
 
 print("\nDATOS DE LA MADRE:")
+print(f"Codigo: {codigo_madre}")
 print(f"Nombre completo: {nombre_madre} {paterno_madre} {materno_madre}")
 
 print("\nDATOS DEL ESTUDIANTE:")
+print(f"Codigo: {codigo_estudiante}")
 print(f"Nombre completo: {nombre_estudiante} {paterno_estudiante} {materno_estudiante}")
 
-print("\nDATOS DEL APODERADO:")
-print(f"Nombre completo: {nombre_apoderado} {paterno_apoderado} {materno_apoderado}")
+print("\nDATOS DEL PADRE:")
+print(f"Codigo: {codigo_padre}")
+print(f"Nombre completo: {nombre_padre} {paterno_padre} {materno_padre}")
 
 print("=" * 45)

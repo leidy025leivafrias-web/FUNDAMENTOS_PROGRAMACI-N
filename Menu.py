@@ -1,5 +1,5 @@
 from Validar_dni import validar_dni_apoderado, validar_dni_estudiante
-from Validar_nombres_del_apoderado import Validar__nombres_del_apoderado
+from Validar_nombres_del_Padre import Validar__nombres_del_apoderado
 from Validar_nombre_estudiante import validar_nombres_estudiante
 
 def mostrar_menu():

@@ -1,7 +1,7 @@
-def Validar__nombres_del_apoderado():
-    # VALIDAR APELLIDO PATERNO
-    print("PASO 1:")
 
+def Validar__nombres_del_padre():
+
+    # VALIDAR APELLIDO PATERNO
     while True:
         paterno = input("Ingrese el apellido paterno: ")
 
@@ -12,7 +12,7 @@ def Validar__nombres_del_apoderado():
         else:
             paterno = paterno.strip()
             print("Apellido paterno registrado correctamente.\n")
-        break
+            break
 
     # VALIDAR APELLIDO MATERNO
     while True:
@@ -46,5 +46,7 @@ def Validar__nombres_del_apoderado():
     print("=" * 30)
 
     return nombre, paterno, materno
+
+
 if __name__ == "__main__":
-    Validar__nombres_del_apoderado()
+    Validar__nombres_del_padre()
