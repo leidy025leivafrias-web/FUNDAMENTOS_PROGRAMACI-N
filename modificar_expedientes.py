@@ -130,11 +130,6 @@ def modificar_expediente(expedientes):
     print("Código:", encontrado["codigo"])
 
 
-if __name__ == "__main__":
-    modificar_expediente([])
-
-
-
 
 
 
