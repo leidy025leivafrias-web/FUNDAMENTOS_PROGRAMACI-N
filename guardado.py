@@ -2,10 +2,6 @@ import csv
 
 def guardar_expedientes(expedientes):
 
-    if len(expedientes) == 0:
-        print("No hay expedientes registrados para guardar.")
-        return
-
     with open("expedientes.csv", "w", newline="", encoding="utf-8-sig") as archivo:
 
         escritor = csv.writer(archivo)
@@ -32,7 +28,6 @@ def guardar_expedientes(expedientes):
         ])
 
         for expediente in expedientes:
-
             notas = expediente.get("calificaciones", {})
 
             escritor.writerow([
