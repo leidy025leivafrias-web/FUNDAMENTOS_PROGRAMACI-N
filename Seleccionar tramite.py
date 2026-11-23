@@ -1,6 +1,7 @@
 # VALIDAR Y SELECCIONAR TRÁMITE
 
 def seleccionar_tramite():
+
     while True:
         tramite = input(
             "Ingrese el trámite que desea realizar: "
@@ -25,4 +26,3 @@ def seleccionar_tramite():
 
 if __name__ == "__main__":
     seleccionar_tramite()
-
