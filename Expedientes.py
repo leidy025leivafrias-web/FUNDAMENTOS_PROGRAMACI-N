@@ -359,6 +359,4 @@ def Expedientes(expedientes):
                 break
             else:
                 print("Opción no válida. Intente de nuevo.")
-    main()
-if __name__ == "__main__":
-    Expedientes()
+    
