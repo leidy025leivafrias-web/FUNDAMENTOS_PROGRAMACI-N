@@ -8,7 +8,7 @@ def modificar_expediente(expedientes):
     print("\n--- MODIFICAR DATOS DEL EXPEDIENTE ---")
 
     codigo_buscar = input(
-        "Ingrese el código del expediente (EXP-1001): "
+        "Ingrese el código del expediente (EXP001): "
     ).strip().upper()
 
     encontrado = None
