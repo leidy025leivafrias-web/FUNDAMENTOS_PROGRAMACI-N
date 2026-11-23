@@ -13,7 +13,7 @@ from Expedientes import Expedientes
 from guardado import guardar_expedientes
 from Cargar_expedientes import cargar_expedientes
 from eliminar_expedientes import eliminar_expedientes
-
+from modificar_expedientes import modificar_expediente
 
 def mostrar_menu():
     print("*** Ejecución Iniciada. ***")
