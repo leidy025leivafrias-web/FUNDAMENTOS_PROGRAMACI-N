@@ -5,15 +5,13 @@ def eliminar_expedientes(expedientes):
 
     print("\n--- ELIMINAR EXPEDIENTE ---")
 
-    while True:
-        codigo_buscar = input(
-            "Ingrese el código del expediente (Ej. EXP-1001): "
-        ).strip().upper()
+    codigo_buscar = input(
+        "Ingrese el código del expediente (Ej. EXP001): "
+    ).strip().upper()
 
-        if codigo_buscar:
-            break
-
-        print("ERROR: El código no puede estar vacío. Intente nuevamente.")
+    if not codigo_buscar:
+        print("ERROR: El código no puede estar vacío.")
+        return
 
     for i, expediente in enumerate(expedientes):
         codigo = str(expediente.get("codigo", "")).strip().upper()
