@@ -1,4 +1,3 @@
-
 from Validar_dni import validar_dni_apoderado, validar_dni_estudiante
 from Validar_nombres_del_apoderado import Validar__nombres_del_apoderado
 from Validar_nombre_estudiante import validar_nombres_estudiante
@@ -111,9 +110,18 @@ def main():
             print("\n<<<<< GUARDAR EXPEDIENTES >>>>>")
             guardar_expedientes(expedientes)
 
+        
         elif opcion == '8':
             print("\n<<<<< ELIMINAR EXPEDIENTE >>>>>")
+
+            cantidad_anterior = len(expedientes)
+
             eliminar_expedientes(expedientes)
+
+            if len(expedientes) < cantidad_anterior:
+                guardar_expedientes(expedientes)
+                print("Los cambios se guardaron automáticamente.")
+
 
         elif opcion == '9':
             print("\nSaliendo del sistema...")
