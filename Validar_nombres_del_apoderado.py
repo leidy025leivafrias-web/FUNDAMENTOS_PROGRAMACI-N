@@ -1,16 +1,15 @@
 def Validar__nombres_del_apoderado():
     # VALIDAR APELLIDO PATERNO
 
-    while True:
-        paterno = input("2. APELLIDO PATERNO: ")
+   while True:
+    paterno = input("2. APELLIDO PATERNO: ").strip()
 
-        if not paterno.strip():
-            print("ERROR: No puede dejar el apellido paterno en blanco.")
-        elif not paterno.replace(" ", "").isalpha():
-            print("ERROR: El apellido solo debe contener letras.")
-        else:
-            paterno = paterno.strip()
-            print("*Apellido paterno registrado correctamente.*\n")
+    if not paterno:
+        print("ERROR: No puede dejar el apellido paterno en blanco.")
+    elif not paterno.replace(" ", "").isalpha():
+        print("ERROR: El apellido solo debe contener letras.")
+    else:
+        print("*Apellido paterno registrado correctamente.*\n")
         break
 
     # VALIDAR APELLIDO MATERNO
