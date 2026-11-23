@@ -1,43 +1,45 @@
-#Función 4: Actualizar estado del trámite
-
-def actualizar_estado_tramite(codigos, estados, total):
+def actualizar_estado_tramite(expedientes):
     print("\n--- ACTUALIZAR ESTADO DEL TRÁMITE ---")
-    codigo_buscar = input("Ingrese el código del expediente:").strip().upper()
 
-    posicion = -1
-    for i in range(total):
-        if codigos[i] == codigo_buscar:
-            posicion = i
+    codigo_buscar = input("Ingrese el código del expediente: ").strip().upper()
+
+    expediente_encontrado = None
+
+    for expediente in expedientes:
+        if expediente["codigo"].upper() == codigo_buscar:
+            expediente_encontrado = expediente
             break
 
-    if posicion != -1:
-        print(f"Expediente encontrado. Estado actual: {estados[posicion]}")
-        estado_original = estados[posicion]
-
-        print("1. PENDIENTE")
-        print("2. EN PROCESO")
-        print("3. ATENDIDO")
-        print("4. RECHAZADO")
-
-        opcion = input("Seleccione el nuevo estado (1-4): ").strip()
-        nuevo_estado = ""
-
-        if opcion == "1":
-            nuevo_estado = "PENDIENTE"
-        elif opcion == "2":
-            nuevo_estado = "EN PROCESO"
-        elif opcion == "3":
-            nuevo_estado = "ATENDIDO"
-        elif opcion == "4":
-            nuevo_estado = "RECHAZADO"
-        else:
-            print("Opción no válida. No se realizaron cambios.")
-            return
-
-        if nuevo_estado == estado_original:
-            print(f"[!] Alerta: El expediente ya se encuentra en estado {estado_original}.")
-        else:
-            estados[posicion] = nuevo_estado
-            print(f"¡Éxito! El estado se actualizó a: {estados[posicion]}")
-    else:
+    if expediente_encontrado is None:
         print("Error: El código ingresado no existe.")
+        return
+
+    print("Estado actual:", expediente_encontrado["estado"])
+
+    print("\n1. PENDIENTE")
+    print("2. EN PROCESO")
+    print("3. ATENDIDO")
+    print("4. RECHAZADO")
+
+    opcion = input("Seleccione el nuevo estado (1-4): ").strip()
+
+    estados = {
+        "1": "PENDIENTE",
+        "2": "EN PROCESO",
+        "3": "ATENDIDO",
+        "4": "RECHAZADO"
+    }
+
+    if opcion not in estados:
+        print("Opción no válida. No se realizaron cambios.")
+        return
+
+    nuevo_estado = estados[opcion]
+
+    if expediente_encontrado["estado"].upper() == nuevo_estado:
+        print("El expediente ya tiene ese estado.")
+        return
+
+    expediente_encontrado["estado"] = nuevo_estado
+
+    print("Estado actualizado correctamente:", nuevo_estado)
