@@ -7,7 +7,7 @@ def modificar_expediente(expedientes):
         for exp in expedientes:
             if exp["codigo"]. upper() == codigoBuscar:
                 encontrado = True
-                print(f"Expediente {exp["codigo"]} encontrado. Ingrese los nuevos datos")
+                print(f"Expediente {exp['codigo']} encontrado. Ingrese los nuevos datos")
 
                 exp["dni_apoderado"] = input("Nuevo DNI del apoderado")
                 exp["telefono_apoderado"] = input("Nuevo telefono del apoderado")
