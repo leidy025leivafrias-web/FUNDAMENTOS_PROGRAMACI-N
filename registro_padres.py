@@ -14,7 +14,7 @@ def registrar_padre():
             return padre["codigo"]
             
     nombres = input("Nombres del padre: ").strip()
-    paterno = input("Apellido平aterno: ").strip()
+    paterno = input("Apellido paterno: ").strip()
     materno = input("Apellido materno: ").strip()
     telefono = input("Teléfono: ").strip()
     correo = input("Correo electrónico: ").strip()
