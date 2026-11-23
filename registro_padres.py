@@ -6,7 +6,7 @@ def generar_codigo_padre(lista):
 
 def registrar_padre():
     print("\n--- REGISTRO DE PADRE ---")
-    dni = input("Ingrese DNI del padre: ").strip
+    dni = input("Ingrese DNI del padre: ").strip()
 
     for padre in padres:
         if padre["dni"] == dni:
