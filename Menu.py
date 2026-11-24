@@ -1,3 +1,4 @@
+
 from Validar_dni import validar_dni_apoderado, validar_dni_estudiante
 from Validar_nombres_del_apoderado import Validar__nombres_del_apoderado
 from Validar_nombre_estudiante import validar_nombres_estudiante
@@ -13,7 +14,7 @@ from Expedientes import Expedientes
 from guardado import guardar_expedientes
 from Cargar_expedientes import cargar_expedientes
 from eliminar_expedientes import eliminar_expedientes
-from modificar_expedientes import modificar_expedientes
+from modificar_expedientes import modificar_expediente
 
 
 def mostrar_menu():
@@ -121,7 +122,7 @@ def main():
             print("\n<<<<< MODIFICAR EXPEDIENTE >>>>>")
 
             if expedientes:
-                modificar_expedientes(expedientes)
+                modificar_expediente(expedientes)
                 guardar_expedientes(expedientes)
             else:
                 print("\nNo hay expedientes registrados.")
