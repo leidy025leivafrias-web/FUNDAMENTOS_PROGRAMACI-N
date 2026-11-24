@@ -1,4 +1,3 @@
-# MODIFICAR DATOS DEL EXPEDIENTE
 
 def modificar_expediente(expedientes):
 
@@ -69,17 +68,6 @@ def modificar_expediente(expedientes):
     while True:
         correo = input("Nuevo correo del apoderado: ").strip()
 
-        if (
-            correo.count("@") == 1
-            and " " not in correo
-            and correo.split("@")[0]
-            and correo.split("@")[1] == "gmail.com"
-            and "." not in correo.split("@")[0]
-                or False
-        ):
-            # Esta condición se sustituye por la validación inferior.
-            pass
-
         partes = correo.split("@")
 
         if (
@@ -89,6 +77,8 @@ def modificar_expediente(expedientes):
             and "." not in partes[0]
             and correo.count("@") == 1
             and " " not in correo
+            and not partes[0].startswith(".")
+            and not partes[0].endswith(".")
         ):
             break
 
