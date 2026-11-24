@@ -1,4 +1,3 @@
-
 from Validar_dni import validar_dni_apoderado, validar_dni_estudiante
 from Validar_nombres_del_apoderado import Validar__nombres_del_apoderado
 from Validar_nombre_estudiante import validar_nombres_estudiante
@@ -14,25 +13,24 @@ from Expedientes import Expedientes
 from guardado import guardar_expedientes
 from Cargar_expedientes import cargar_expedientes
 from eliminar_expedientes import eliminar_expedientes
-from modificar_expedientes import modificar_expediente
+from modificar_expedientes import modificar_expedientes
 
 
 def mostrar_menu():
-    print("*** Ejecución Iniciada. ***")
-    print("===============================================")
+    print("\n===============================================")
     print("  MESA DE PARTES DIGITAL - FE Y ALEGRÍA Nº 37")
     print("===============================================")
     print("1. Registrar Nuevo Expediente")
-    print("2. Listar expediente")
+    print("2. Listar Expedientes")
     print("3. Buscar por Código")
     print("4. Ordenar por Código")
     print("5. Actualizar Estado")
     print("6. Registrar Calificaciones")
     print("7. Guardar en Archivo")
-    print("8. Modificar Expediente")
-    print("9. Eliminar Expediente")
+    print("8. Eliminar Expediente")
+    print("9. Modificar Expediente")
     print("10. Salir")
-    print("Seleccione una opción:")
+    print("===============================================")
 
 
 def main():
@@ -40,7 +38,7 @@ def main():
 
     while True:
         mostrar_menu()
-        opcion = input("> ").strip()
+        opcion = input("Seleccione una opción: ").strip()
 
         if opcion == '1':
             print("\n<<<<< REGISTRAR NUEVO EXPEDIENTE >>>>>")
@@ -52,6 +50,7 @@ def main():
             dni_estudiante = validar_dni_estudiante()
             nombre_estudiante, paterno_estudiante, materno_estudiante = validar_nombres_estudiante()
             nivel = Validar_Nivel_Educativo_del_estudiante()
+
             codigo = Codigo_expediente(expedientes)
 
             expediente = {
@@ -75,6 +74,8 @@ def main():
             print("\nExpediente registrado correctamente.")
             print("Código asignado:", codigo)
 
+            guardar_expedientes(expedientes)
+
         elif opcion == '2':
             print("\n<<<<< LISTADO GENERAL DE EXPEDIENTES >>>>>")
             listado_expedientes(expedientes)
@@ -91,13 +92,15 @@ def main():
             print("\n<<<<< ACTUALIZAR ESTADO >>>>>")
             if expedientes:
                 actualizar_estado_tramite(expedientes)
+                guardar_expedientes(expedientes)
             else:
-                print("\nNo hay expedientes registrados en el sistema.")
+                print("\nNo hay expedientes registrados.")
 
         elif opcion == '6':
             print("\n<<<<< REGISTRAR CALIFICACIONES >>>>>")
             if expedientes:
                 Expedientes(expedientes)
+                guardar_expedientes(expedientes)
             else:
                 print("\nNo hay expedientes registrados.")
 
@@ -106,24 +109,25 @@ def main():
             guardar_expedientes(expedientes)
 
         elif opcion == '8':
-            print("\n<<<<< MODIFICAR EXPEDIENTE >>>>>")
-            if expedientes:
-                modificar_expediente(expedientes)
-                guardar_expedientes(expedientes)
-            else:
-                print("\nNo hay expedientes registrados.")
-
-        elif opcion == '9':
             print("\n<<<<< ELIMINAR EXPEDIENTE >>>>>")
-            cantidad_anterior = len(expedientes)
 
+            cantidad_anterior = len(expedientes)
             eliminar_expedientes(expedientes)
 
             if len(expedientes) < cantidad_anterior:
                 guardar_expedientes(expedientes)
-                print("Los cambios se guardaron automáticamente.")
+
+        elif opcion == '9':
+            print("\n<<<<< MODIFICAR EXPEDIENTE >>>>>")
+
+            if expedientes:
+                modificar_expedientes(expedientes)
+                guardar_expedientes(expedientes)
+            else:
+                print("\nNo hay expedientes registrados.")
 
         elif opcion == '10':
+            guardar_expedientes(expedientes)
             print("\nSaliendo del sistema...")
             break
 
@@ -133,4 +137,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
