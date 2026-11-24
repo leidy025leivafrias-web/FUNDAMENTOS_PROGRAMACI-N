@@ -97,14 +97,32 @@ def modificar_expediente(expedientes):
             print("ERROR: Ingrese solamente letras y espacios.")
 
     # VALIDAR DNI DEL ESTUDIANTE
+    dni_anterior = encontrado["dni_estudiante"]
+
     while True:
         dni_estudiante = input("Nuevo DNI del estudiante: ").strip()
 
-        if dni_estudiante.isdigit() and len(dni_estudiante) == 8:
-            encontrado["dni_estudiante"] = dni_estudiante
-            break
+        if not dni_estudiante.isdigit() or len(dni_estudiante) != 8:
+            print("ERROR: El DNI debe contener exactamente 8 dígitos.")
+            continue
 
-        print("ERROR: El DNI debe contener exactamente 8 dígitos.")
+        duplicado = any(
+            exp is not encontrado
+            and exp["dni_estudiante"] == dni_estudiante
+            for exp in expedientes
+        )
+
+        if duplicado:
+            print("ERROR: Ese DNI ya pertenece a otro estudiante.")
+            continue
+
+        encontrado["dni_estudiante"] = dni_estudiante
+        break
+
+    # ELIMINAR CALIFICACIONES SI CAMBIA EL DNI
+    if dni_anterior != dni_estudiante:
+        encontrado.pop("calificaciones", None)
+        print("Las calificaciones anteriores fueron eliminadas.")
 
     # VALIDAR NIVEL EDUCATIVO
     while True:
@@ -128,8 +146,3 @@ def modificar_expediente(expedientes):
 
     print("\n¡DATOS DEL EXPEDIENTE ACTUALIZADOS CON ÉXITO!")
     print("Código:", encontrado["codigo"])
-
-
-
-
-
