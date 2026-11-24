@@ -1,40 +1,36 @@
-# ordenar_registros.py
 
-from datos import (
-    total_registros,
-    codigos_exp,
-    dnis,
-    apellidos,
-    nombres,
-    bimestre1,
-    bimestre2,
-    bimestre3,
-    promedios_finales,
-    estados
-)
-
+# ORDENAR POR PROMEDIO
 def ordenar_registros():
-    if total_registros < 2:
-        print("Se requieren al menos 2 registros para ordenar.")
+
+    if len(expedientes) < 2:
+        print("Se necesitan al menos 2 expedientes para ordenar.")
         return
 
-    # Método burbuja: se mueven juntos todos los datos de cada estudiante.
-    listas = [
-        codigos_exp,
-        dnis,
-        apellidos,
-        nombres,
-        bimestre1,
-        bimestre2,
-        bimestre3,
-        promedios_finales,
-        estados,
-    ]
+    expedientes_ordenados = sorted(
+        expedientes,
+        key=lambda exp: exp.get("calificaciones", {}).get("promedio", -1),
+        reverse=True
+    )
 
-    for i in range(total_registros - 1):
-        for j in range(total_registros - 1 - i):
-            if promedios_finales[j] < promedios_finales[j + 1]:
-                for lista in listas:
-                    lista[j], lista[j + 1] = lista[j + 1], lista[j]
+    print("\nEXPEDIENTES ORDENADOS POR PROMEDIO")
+    print("----------------------------------------")
 
-    print("Registros ordenados por promedio, de mayor a menor.")
+    for i, expediente in enumerate(expedientes_ordenados, start=1):
+
+        notas = expediente.get("calificaciones")
+
+        print(f"\n{i}. Código: {expediente['codigo']}")
+        print(
+            "Estudiante:",
+            expediente["nombre_estudiante"],
+            expediente["paterno_estudiante"],
+            expediente["materno_estudiante"]
+        )
+
+        if notas:
+            print("Promedio:", notas["promedio"])
+            print("Estado:", notas["estado_academico"])
+        else:
+            print("Sin calificaciones registradas.")
+
+    print("----------------------------------------")
