@@ -1,18 +1,31 @@
+
 # VALIDAR CORREO ELECTRÓNICO
-while True:
 
-    correo = input("Nuevo correo del apoderado: ").strip()
+def validar_correo():
 
-    partes = correo.split("@")
+    while True:
 
-    if (
-        len(partes) == 2
-        and partes[0]
-        and partes[1].lower() == "gmail.com"
-        and " " not in correo
-        and not partes[0].startswith(".")
-        and not partes[0].endswith(".")
-    ):
-        break
+        correo = input(
+            "Nuevo correo del apoderado: "
+        ).strip()
 
-    print("ERROR: Ingrese un correo válido terminado en @gmail.com.")
+        partes = correo.split("@")
+
+        if (
+            len(partes) == 2
+            and partes[0]
+            and partes[1].lower() == "gmail.com"
+            and " " not in correo
+            and not partes[0].startswith(".")
+            and not partes[0].endswith(".")
+        ):
+            print("Correo electrónico registrado correctamente.")
+            return correo
+
+        print(
+            "ERROR: Ingrese un correo válido terminado en @gmail.com."
+        )
+
+
+if __name__ == "__main__":
+    validar_correo()
