@@ -1,4 +1,5 @@
 # MODIFICAR DATOS DEL EXPEDIENTE
+
 def modificar_expediente(expedientes):
 
     if not expedientes:
@@ -11,15 +12,16 @@ def modificar_expediente(expedientes):
         "Ingrese el código del expediente (EXP001): "
     ).strip().upper()
 
-    encontrado = None
-
-    for exp in expedientes:
-        if exp["codigo"].strip().upper() == codigo_buscar:
-            encontrado = exp
-            break
+    encontrado = next(
+        (
+            exp for exp in expedientes
+            if exp["codigo"].strip().upper() == codigo_buscar
+        ),
+        None
+    )
 
     if encontrado is None:
-        print("No se encontró ningún expediente con ese código.")
+        print("No se encontró ningún expediente.")
         return
 
     print("\nExpediente encontrado.")
@@ -31,7 +33,6 @@ def modificar_expediente(expedientes):
         dni = input("Nuevo DNI del apoderado: ").strip()
 
         if dni.isdigit() and len(dni) == 8:
-            encontrado["dni_apoderado"] = dni
             break
 
         print("ERROR: El DNI debe contener exactamente 8 dígitos.")
@@ -41,12 +42,13 @@ def modificar_expediente(expedientes):
         telefono = input("Nuevo teléfono del apoderado: ").strip()
 
         if telefono.isdigit() and len(telefono) == 9:
-            encontrado["telefono_apoderado"] = telefono
             break
 
         print("ERROR: El teléfono debe contener exactamente 9 dígitos.")
 
-    # VALIDAR DATOS DEL APODERADO
+    # VALIDAR NOMBRES DEL APODERADO
+    nuevos_datos = {}
+
     campos_apoderado = [
         ("nombre_apoderado", "Nuevo nombre del apoderado: "),
         ("paterno_apoderado", "Nuevo apellido paterno del apoderado: "),
@@ -58,28 +60,41 @@ def modificar_expediente(expedientes):
             dato = input(mensaje).strip()
 
             if dato and dato.replace(" ", "").isalpha():
-                encontrado[clave] = dato
+                nuevos_datos[clave] = dato
                 break
 
             print("ERROR: Ingrese solamente letras y espacios.")
 
-    # VALIDAR CORREO DEL APODERADO
+    # VALIDAR CORREO ELECTRÓNICO
     while True:
         correo = input("Nuevo correo del apoderado: ").strip()
 
         if (
             correo.count("@") == 1
             and " " not in correo
-            and "." in correo.split("@")[1]
-            and correo.split("@")[1].split(".")[0]
-            and correo.split("@")[1].split(".")[-1]
+            and correo.split("@")[0]
+            and correo.split("@")[1] == "gmail.com"
+            and "." not in correo.split("@")[0]
+                or False
         ):
-            encontrado["correo_apoderado"] = correo
+            # Esta condición se sustituye por la validación inferior.
+            pass
+
+        partes = correo.split("@")
+
+        if (
+            len(partes) == 2
+            and partes[0]
+            and partes[1].lower() == "gmail.com"
+            and "." not in partes[0]
+            and correo.count("@") == 1
+            and " " not in correo
+        ):
             break
 
-        print("ERROR: Ingrese un correo electrónico válido.")
+        print("ERROR: Ingrese un correo válido terminado en @gmail.com.")
 
-    # VALIDAR DATOS DEL ESTUDIANTE
+    # VALIDAR NOMBRES DEL ESTUDIANTE
     campos_estudiante = [
         ("nombre_estudiante", "Nuevo nombre del estudiante: "),
         ("paterno_estudiante", "Nuevo apellido paterno del estudiante: "),
@@ -91,7 +106,7 @@ def modificar_expediente(expedientes):
             dato = input(mensaje).strip()
 
             if dato and dato.replace(" ", "").isalpha():
-                encontrado[clave] = dato
+                nuevos_datos[clave] = dato
                 break
 
             print("ERROR: Ingrese solamente letras y espacios.")
@@ -116,33 +131,69 @@ def modificar_expediente(expedientes):
             print("ERROR: Ese DNI ya pertenece a otro estudiante.")
             continue
 
-        encontrado["dni_estudiante"] = dni_estudiante
         break
 
-    # ELIMINAR CALIFICACIONES SI CAMBIA EL DNI
-    if dni_anterior != dni_estudiante:
-        encontrado.pop("calificaciones", None)
-        print("Las calificaciones anteriores fueron eliminadas.")
-
     # VALIDAR NIVEL EDUCATIVO
-    while True:
-        nivel = input("Nuevo nivel educativo: ").strip()
+    niveles = {
+        "1": "Inicial",
+        "2": "Primaria",
+        "3": "Secundaria",
+        "4": "EBE (Educación Básica Especial)"
+    }
 
-        if nivel:
-            encontrado["nivel"] = nivel
+    while True:
+        print("\nSeleccione el nuevo nivel educativo:")
+        print("1. Inicial")
+        print("2. Primaria")
+        print("3. Secundaria")
+        print("4. EBE (Educación Básica Especial)")
+
+        opcion = input("Seleccione una opción: ").strip()
+
+        if opcion in niveles:
+            nivel = niveles[opcion]
             break
 
-        print("ERROR: El nivel educativo no puede estar vacío.")
+        print("ERROR: Seleccione una opción del 1 al 4.")
 
     # VALIDAR ESTADO DEL TRÁMITE
-    while True:
-        estado = input("Nuevo estado del trámite: ").strip()
+    estados = {
+        "1": "PENDIENTE",
+        "2": "EN PROCESO",
+        "3": "ATENDIDO",
+        "4": "RECHAZADO"
+    }
 
-        if estado:
-            encontrado["estado"] = estado
+    while True:
+        print("\nSeleccione el nuevo estado del trámite:")
+        print("1. Pendiente")
+        print("2. En proceso")
+        print("3. Atendido")
+        print("4. Rechazado")
+
+        opcion = input("Seleccione una opción: ").strip()
+
+        if opcion in estados:
+            estado = estados[opcion]
             break
 
-        print("ERROR: El estado no puede estar vacío.")
+        print("ERROR: Seleccione una opción del 1 al 4.")
+
+    # ACTUALIZAR LOS DATOS
+    encontrado["dni_apoderado"] = dni
+    encontrado["telefono_apoderado"] = telefono
+    encontrado["correo_apoderado"] = correo
+
+    encontrado.update(nuevos_datos)
+
+    encontrado["dni_estudiante"] = dni_estudiante
+    encontrado["nivel"] = nivel
+    encontrado["estado"] = estado
+
+    # ELIMINAR CALIFICACIONES SI CAMBIÓ EL DNI
+    if dni_anterior != dni_estudiante:
+        encontrado.pop("calificaciones", None)
+        print("\nLas calificaciones anteriores fueron eliminadas.")
 
     print("\n¡DATOS DEL EXPEDIENTE ACTUALIZADOS CON ÉXITO!")
     print("Código:", encontrado["codigo"])
