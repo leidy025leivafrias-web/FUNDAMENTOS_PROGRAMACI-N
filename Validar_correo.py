@@ -1,5 +1,6 @@
 # VALIDAR CORREO ELECTRÓNICO
 while True:
+
     correo = input("Nuevo correo del apoderado: ").strip()
 
     partes = correo.split("@")
@@ -9,6 +10,8 @@ while True:
         and partes[0]
         and partes[1].lower() == "gmail.com"
         and " " not in correo
+        and not partes[0].startswith(".")
+        and not partes[0].endswith(".")
     ):
         break
 
