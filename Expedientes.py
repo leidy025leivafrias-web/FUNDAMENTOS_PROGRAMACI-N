@@ -9,6 +9,11 @@ def Expedientes(expedientes):
         while True:
             try:
                 entrada = input(mensaje).strip().replace(",", ".")
+
+                if not entrada:
+                    print("ERROR: No puede dejar la nota vacía.")
+                    continue
+
                 nota = float(entrada)
 
                 if 0 <= nota <= 20:
@@ -43,6 +48,7 @@ def Expedientes(expedientes):
         print("----------------------------------------")
         print("Código:", expediente["codigo"])
         print("DNI:", expediente["dni_estudiante"])
+
         print(
             "Estudiante:",
             expediente["nombre_estudiante"],
@@ -72,7 +78,9 @@ def Expedientes(expedientes):
 
         print("\n===== REGISTRAR CALIFICACIONES =====")
 
-        codigo = input("Ingrese el código del expediente: ").strip().upper()
+        codigo = input(
+            "Ingrese el código del expediente: "
+        ).strip().upper()
 
         expediente = buscar_por_codigo(codigo)
 
@@ -86,6 +94,7 @@ def Expedientes(expedientes):
             return
 
         print("\nEstudiante encontrado:")
+
         print(
             expediente["nombre_estudiante"],
             expediente["paterno_estudiante"],
@@ -143,13 +152,36 @@ def Expedientes(expedientes):
             print("Se necesitan al menos 2 expedientes para ordenar.")
             return
 
-        expedientes.sort(
+        # ORDENAR UNA COPIA SIN MODIFICAR LA LISTA ORIGINAL
+        expedientes_ordenados = sorted(
+            expedientes,
             key=lambda exp: exp.get("calificaciones", {}).get("promedio", -1),
             reverse=True
         )
 
-        print("\nExpedientes ordenados por promedio de mayor a menor.")
-        listar_registros()
+        print("\n========== EXPEDIENTES ORDENADOS POR PROMEDIO ==========")
+
+        for i, expediente in enumerate(expedientes_ordenados, start=1):
+
+            notas = expediente.get("calificaciones")
+
+            print(f"\n{i}. Código: {expediente['codigo']}")
+            print("DNI:", expediente["dni_estudiante"])
+
+            print(
+                "Estudiante:",
+                expediente["nombre_estudiante"],
+                expediente["paterno_estudiante"],
+                expediente["materno_estudiante"]
+            )
+
+            if notas:
+                print("Promedio:", notas["promedio"])
+                print("Estado:", notas["estado_academico"])
+            else:
+                print("Sin calificaciones registradas.")
+
+        print("\n========================================================")
 
     # ACTUALIZAR CALIFICACIONES
     def actualizar_calificaciones():
@@ -208,6 +240,7 @@ def Expedientes(expedientes):
 
             print(f"\n{i}. Código: {expediente['codigo']}")
             print("DNI:", expediente["dni_estudiante"])
+
             print(
                 "Estudiante:",
                 expediente["nombre_estudiante"],
@@ -223,8 +256,10 @@ def Expedientes(expedientes):
                     f"II={notas['bimestre2']} | "
                     f"III={notas['bimestre3']}"
                 )
+
                 print("Promedio:", notas["promedio"])
                 print("Estado:", notas["estado_academico"])
+
             else:
                 print("Sin calificaciones registradas.")
 
@@ -250,6 +285,7 @@ def Expedientes(expedientes):
 
         try:
             opcion = int(input("Seleccione una opción (1-6): "))
+
         except ValueError:
             print("ERROR: Ingrese una opción numérica.")
             continue
