@@ -1,20 +1,20 @@
 def Codigo_expediente(expedientes):
-    numero = len(expedientes) + 1
-    while True:
-       codigo = f"EXP{numero:03d}"
-       existe = False
-       
-       for expediente in expedientes:
-          if expediente["codigo"] == codigo:
-              existe = True
-              break
-        
-       if existe:
-           numero += 1
-       else:
-           return codigo
+
+    numeros = []
+
+    for expediente in expedientes:
+        codigo = expediente.get("codigo", "")
+
+        if codigo.startswith("EXP"):
+            try:
+                numeros.append(int(codigo[3:]))
+            except ValueError:
+                continue
+
+    siguiente = max(numeros, default=0) + 1
+
+    return f"EXP{siguiente:03d}"
+
+
 if __name__ == "__main__":
-    expedientes = []
-    codigo = Codigo_expediente(expedientes)
-    print("Código generado:", codigo)       
-       
+    print(Codigo_expediente([]))
